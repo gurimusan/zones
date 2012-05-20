@@ -14,3 +14,4 @@ mx(_a, concat("mailhost", _a), 10, ttl)
 mx(concat("lists", _a), concat("mailhost", _a), 10, ttl)
 txt(_a, "v=spf1 a mx ptr ip4:" .. ipaddr .. " ptr:mailhost." .. _a .. " mx:mailhost." .. _a .. " mx:" .. _a .. " -all", ttl)
 txt(concat("lists", _a), "v=spf1 a mx ptr ip4:" .. ipaddr .. " ptr:mailhost." .. _a .. " mx:mailhost." .. _a .. " mx:" .. _a .. " -all", ttl)
+
