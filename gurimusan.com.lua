@@ -3,8 +3,8 @@ ipaddr = "49.212.150.92"
 
 a(_a, ipaddr, ttl)
 cname("www", _a, ttl)
-cname("redmine", _a, ttl)
-cname("hg", _a, ttl)
+
+a(concat("hg", _a), ipaddr, ttl)
 
 a(concat("mail", _a), ipaddr, ttl)
 a(concat("mailhost", _a), ipaddr, ttl)
