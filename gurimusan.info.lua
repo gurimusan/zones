@@ -5,6 +5,7 @@ a(_a, ipaddr, ttl)
 cname("www", _a, ttl)
 
 a(concat("hg", _a), ipaddr, ttl)
+a(concat("jenkins", _a), ipaddr, ttl)
 
 a(concat("mail", _a), ipaddr, ttl)
 a(concat("mailhost", _a), ipaddr, ttl)
