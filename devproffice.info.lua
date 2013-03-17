@@ -2,7 +2,7 @@ ttl = 3600
 ipaddr = "133.242.159.93"
 
 a(_a, ipaddr, ttl)
-cname("www", _a, ttl)
+cname("*", _a, ttl)
 
 a(concat("mail", _a), ipaddr, ttl)
 a(concat("mailhost", _a), ipaddr, ttl)
