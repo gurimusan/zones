@@ -15,10 +15,10 @@ a(concat("redmine", _a), ipaddr, ttl)
 txt(_a, "v=spf1 include:spf.brevo.com -all", ttl)
 
 -- DMARC。レポート送付先は受信可能な外部アドレス（@gurimusan.info は受信停止のため使わない）。
-txt(concat("_dmarc", _a), "v=DMARC1; p=none; rua=mailto:matsushita-nagatoshi@scratch.jp", ttl)
+txt(concat("_dmarc", _a), "v=DMARC1; p=none", ttl)
 
--- DKIM / ドメイン認証: Brevo 管理画面「Senders, Domains & Dedicated IPs」→ 対象ドメイン →
--- Authenticate に表示される CNAME/TXT をそのまま追加する（値は要記入）。
---   例) cname(concat("brevo1._domainkey", _a), "<Brevoが示すターゲット>.", ttl)
---       cname(concat("brevo2._domainkey", _a), "<Brevoが示すターゲット>.", ttl)
---       txt(concat("<Brevoが示すコード>", _a), "<Brevoが示す値>", ttl)  -- ドメイン認証コード
+-- Brevo ドメイン認証（2026-07-08 取得, branded subdomain 方式）。
+-- ブランドサブドメイン send.gurimusan.info の CNAME が DKIM 署名・リターンパスを担う。
+cname(concat("send", _a), "send-gurimusan-info.brand.brevosend.com.", ttl)
+-- ドメイン所有確認コード（apex TXT。上の SPF TXT とは別レコードなので共存可）。
+txt(_a, "brevo-code:9b7872a8ad0c0c7164059a338959a9ee", ttl)
