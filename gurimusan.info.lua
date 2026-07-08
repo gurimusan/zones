@@ -1,6 +1,7 @@
 ttl = 3600
 ipaddr = "49.212.150.92"
 
+
 a(_a, ipaddr, ttl)
 cname("www", _a, ttl)
 
