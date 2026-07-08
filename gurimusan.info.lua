@@ -18,9 +18,10 @@ txt(_a, "v=spf1 include:spf.brevo.com -all", ttl)
 -- DMARC。集約レポート送付先は Brevo 指定の rua（@gurimusan.info は受信停止のため使わない）。
 txt(concat("_dmarc", _a), "v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com", ttl)
 
--- Brevo ドメイン認証（2026-07-08, 標準 DKIM 方式）。DKIM 署名用 CNAME 2本
--- （brevo1/brevo2 の _domainkey）。branded subdomain 方式は不採用のため send CNAME は削除。
+-- Brevo ドメイン認証（2026-07-08）。DKIM 署名用 CNAME 2本（brevo1/brevo2 の _domainkey）。
 cname(concat("brevo1._domainkey", _a), "b1.gurimusan-info.dkim.brevo.com.", ttl)
 cname(concat("brevo2._domainkey", _a), "b2.gurimusan-info.dkim.brevo.com.", ttl)
+-- Branded record（Brevo 認証に必須）。ブランドサブドメイン send.gurimusan.info の CNAME。
+cname(concat("send", _a), "send-gurimusan-info.brand.brevosend.com.", ttl)
 -- ドメイン所有確認コード（apex TXT。上の SPF TXT とは別レコードなので共存可）。
 txt(_a, "brevo-code:9b7872a8ad0c0c7164059a338959a9ee", ttl)
