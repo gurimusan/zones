@@ -23,5 +23,8 @@ cname(concat("brevo1._domainkey", _a), "b1.gurimusan-info.dkim.brevo.com.", ttl)
 cname(concat("brevo2._domainkey", _a), "b2.gurimusan-info.dkim.brevo.com.", ttl)
 -- Branded record（Brevo 認証に必須）。ブランドサブドメイン send.gurimusan.info の CNAME。
 cname(concat("send", _a), "send-gurimusan-info.brand.brevosend.com.", ttl)
+-- トラッキング用 CNAME。img.send=開封(Image Redirection) / r.send=クリック(Redirection)。
+cname(concat("img.send", _a), "send-gurimusan-info.img.brand.brevosend.com.", ttl)
+cname(concat("r.send", _a), "send-gurimusan-info.r.brand.brevosend.com.", ttl)
 -- ドメイン所有確認コード（apex TXT。上の SPF TXT とは別レコードなので共存可）。
 txt(_a, "brevo-code:9b7872a8ad0c0c7164059a338959a9ee", ttl)
